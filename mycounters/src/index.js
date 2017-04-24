@@ -1,6 +1,6 @@
 import React from 'react' 
 import { render } from 'react-dom' 
-import Counter from './Counter' 
+import CounterCollection from './CounterCollection' 
 import './index.css'
  
-render(<div><h1>MyCounters</h1><Counter name="Warrior level" initialCount={1} /></div>, document.getElementById('root'))
+render(<div><h1>MyCounters</h1><CounterCollection /></div>, document.getElementById('root'))
