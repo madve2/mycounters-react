@@ -8,6 +8,8 @@ class CounterCollection extends React.Component {
     constructor(props, context) { 
         super(props, context)
         this.addCounter = this.addCounter.bind(this)
+        this.removeCounter = this.removeCounter.bind(this)
+        this.renderSingleCounter = this.renderSingleCounter.bind(this) 
 
         this.state = { 
             counters: [ 
@@ -46,8 +48,17 @@ class CounterCollection extends React.Component {
         ); 
     }
 
+    removeCounter(name) { 
+        this.setState( 
+            { 
+                ...this.state, 
+                counters: this.state.counters.filter(n => n.name !== name) 
+            } 
+        ) 
+    } 
+
     renderSingleCounter(counter) { 
-        return <Counter name={counter.name} initialCount={counter.initialCount} key={counter.name} /> 
+        return <Counter name={counter.name} initialCount={counter.initialCount} key={counter.name} onRemove={this.removeCounter} />
     }
 
     render() {

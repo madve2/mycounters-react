@@ -2,6 +2,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import FaPlusCircle from 'react-icons/lib/fa/plus-circle'
 import FaMinusCircle from 'react-icons/lib/fa/minus-circle'
+import FaTrash from 'react-icons/lib/fa/trash'
 import './Counter.css'
  
 class Counter extends React.Component { 
@@ -9,6 +10,7 @@ class Counter extends React.Component {
         super(props, context) 
         this.increment = this.increment.bind(this) //developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_binding_of_this 
         this.decrement = this.decrement.bind(this)
+        this.remove = this.remove.bind(this)
  
         this.state = { 
             count: this.props.initialCount 
@@ -31,7 +33,11 @@ class Counter extends React.Component {
                 count: this.state.count - 1 
             } 
         ) 
-    } 
+    }
+
+    remove() { 
+        this.props.onRemove(this.props.name) 
+    }
  
     render() { 
         return <div className="Counter"> 
@@ -41,6 +47,7 @@ class Counter extends React.Component {
 
             <button onClick={this.increment}><FaPlusCircle /> Increment</button>
             <button onClick={this.decrement}><FaMinusCircle /> Decrement</button>
+            <button onClick={this.remove}><FaTrash /></button>
         </div>
     } 
 } 
