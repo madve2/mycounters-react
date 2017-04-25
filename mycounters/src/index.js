@@ -5,7 +5,7 @@
  
 // render(<div><h1>MyCounters</h1><CounterCollection /></div>, document.getElementById('root'))
 
-import C from './constants' 
+import {Actions as C, VisibilityFilters} from './constants'
 import initialState from './initialState.json' 
 import { myCountersApp } from './store/reducers'
  
@@ -34,7 +34,13 @@ const action3 = {
 } 
  
 const nextState3 = myCountersApp(nextState2, action3) 
-const nextState4 = myCountersApp(nextState3, action2) 
+
+const action4 = { 
+    type: C.SET_VISIBILITY_FILTER, 
+    filter: VisibilityFilters.SHOW_POSITIVE
+} 
+ 
+const nextState4 = myCountersApp(nextState3, action4)
 
 console.log(state) 
 console.log(nextState)

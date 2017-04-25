@@ -1,4 +1,4 @@
-import C from '../constants'
+import { Actions as C, VisibilityFilters} from '../constants'
 
 export const counter = function (state = { name: "", count: 0}, action) {
     if (action.type === C.INCREASE_COUNTER) {
@@ -39,8 +39,19 @@ export const counters = function (state = [], action) {
     }
 }
 
+export const visibilityFilter = function (state = VisibilityFilters.SHOW_ALL, action) {
+    switch(action.type)
+    {
+        case C.SET_VISIBILITY_FILTER:
+            return action.filter;
+        default:
+            return state;
+    }
+}
+
 export const myCountersApp = function (state = { counters: [] }, action) {
     return {
-        counters: counters(state.counters, action)
+        counters: counters(state.counters, action),
+        visibilityFilter: visibilityFilter(state.visibilityFilter, action)
     }
 }
