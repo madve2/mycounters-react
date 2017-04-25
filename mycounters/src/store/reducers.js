@@ -1,6 +1,7 @@
 import { Actions as C, VisibilityFilters} from '../constants'
+import { combineReducers } from 'redux'
 
-export const counter = function (state = { name: "", count: 0}, action) {
+const counter = function (state = { name: "", count: 0}, action) {
     if (action.type === C.INCREASE_COUNTER) {
         return state.name === action.name
                 ? {...state, count: state.count + 1 }
@@ -16,7 +17,7 @@ export const counter = function (state = { name: "", count: 0}, action) {
     }
 }
 
-export const counters = function (state = [], action) {
+const counters = function (state = [], action) {
     switch(action.type)
     {
         case C.ADD_COUNTER:
@@ -39,7 +40,7 @@ export const counters = function (state = [], action) {
     }
 }
 
-export const visibilityFilter = function (state = VisibilityFilters.SHOW_ALL, action) {
+const visibilityFilter = function (state = VisibilityFilters.SHOW_ALL, action) {
     switch(action.type)
     {
         case C.SET_VISIBILITY_FILTER:
@@ -49,9 +50,9 @@ export const visibilityFilter = function (state = VisibilityFilters.SHOW_ALL, ac
     }
 }
 
-export const myCountersApp = function (state = { counters: [] }, action) {
-    return {
-        counters: counters(state.counters, action),
-        visibilityFilter: visibilityFilter(state.visibilityFilter, action)
-    }
-}
+const myCountersApp = combineReducers({ 
+  counters, 
+  visibilityFilter 
+}) 
+ 
+export default myCountersApp
