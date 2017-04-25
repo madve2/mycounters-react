@@ -16,7 +16,7 @@ const action = {
     name: "Bard level" 
 } 
  
-const nextState = counter(state, action);
+const nextState = counter(state, action)
  
 const action2 = { 
     type: C.ADD_COUNTER, 
@@ -26,16 +26,18 @@ const action2 = {
     } 
 } 
  
-const nextState2 = counterCollection(nextState, action2);  
+const nextState2 = counterCollection(nextState, action2)  
  
 const action3 = { 
     type: C.REMOVE_COUNTER, 
     name: "Wizard level" 
 } 
  
-const nextState3 = counterCollection(nextState2, action3); 
+const nextState3 = counterCollection(nextState2, action3) 
+const nextState4 = counterCollection(nextState3, action2) 
 
-console.log(state); 
-console.log(nextState); 
-console.log(nextState2); 
-console.log(nextState3); 
+console.log(state) 
+console.log(nextState)
+console.log(nextState2)
+console.log(nextState3)
+console.log(nextState4)

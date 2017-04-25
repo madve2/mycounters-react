@@ -30,14 +30,17 @@ export const counter = function (state, action) {
 export const counterCollection = function (state, action) { 
     switch(action.type) 
     { 
-        case C.ADD_COUNTER: 
-            return { 
-                ...state, 
-                counters: [ 
-                    ...state.counters, 
-                    action.payload             
-                ] 
-            } 
+        case C.ADD_COUNTER:
+            const hasThisCounter = state.counters.some( ctr => ctr.name === action.payload.name) 
+            return hasThisCounter 
+                ? state //don't add the counter
+                : { 
+                    ...state, 
+                    counters: [ 
+                        ...state.counters, 
+                        action.payload             
+                    ] 
+                }
         case C.REMOVE_COUNTER: 
             return { 
                 ...state, 
