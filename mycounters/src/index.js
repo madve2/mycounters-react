@@ -7,16 +7,9 @@
 
 import {Actions as C, VisibilityFilters} from './constants'
 import initialState from './initialState.json'
-import myCountersApp from './store/reducers'
-import { createStore } from 'redux'
+import storeFactory from './store'
 
-let store = createStore(myCountersApp, initialState)
-
-console.log(store.getState())
-
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
-)
+let store = storeFactory(initialState)
 
 store.dispatch({
     type: C.INCREASE_COUNTER,
