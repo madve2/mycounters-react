@@ -1,0 +1,8 @@
+const constants = { 
+    INCREASE_COUNTER: "INCREASE_COUNTER", 
+    DECREASE_COUNTER: "DECREASE_COUNTER", 
+    ADD_COUNTER: "ADD_COUNTER", 
+    REMOVE_COUNTER: "REMOVE_COUNTER" 
+} 
+ 
+export default constants

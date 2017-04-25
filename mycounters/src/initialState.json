@@ -1,0 +1,13 @@
+{ 
+    "counters": 
+    [ 
+        { 
+            "name": "Wizard level", 
+            "count": 3 
+        }, 
+        { 
+            "name": "Bard level", 
+            "count": 2 
+        } 
+    ] 
+}
