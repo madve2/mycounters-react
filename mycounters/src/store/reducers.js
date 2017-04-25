@@ -26,3 +26,24 @@ export const counter = function (state, action) {
         return state; 
     } 
 }
+
+export const counterCollection = function (state, action) { 
+    switch(action.type) 
+    { 
+        case C.ADD_COUNTER: 
+            return { 
+                ...state, 
+                counters: [ 
+                    ...state.counters, 
+                    action.payload             
+                ] 
+            } 
+        case C.REMOVE_COUNTER: 
+            return { 
+                ...state, 
+                counters: state.counters.filter(ctr => ctr.name !== action.name) 
+            } 
+        default: 
+            return state 
+    } 
+}
