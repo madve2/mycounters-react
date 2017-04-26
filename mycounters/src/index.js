@@ -7,7 +7,8 @@ import storeFactory from './store'
 import './index.css'
 import * as actions from './actions'
 
-let store = storeFactory(initialState)
+let savedStateString = localStorage.getItem("mycounters-autosave") 
+let store = storeFactory( savedStateString ? JSON.parse(savedStateString) : initialState)
 
 render(<Provider store={store}>
             <div>

@@ -23,4 +23,11 @@ const logMessages = store => next => action => {
     return result 
 }
 
-export default (initialState={}) => createStore(myCountersApp, initialState, applyMiddleware(thunk, logMessages))
+const autoSave = store => next => action => { 
+    let result = next(action) 
+    const currentStateString = JSON.stringify(store.getState()) 
+    localStorage.setItem("mycounters-autosave", currentStateString) 
+    return result 
+} 
+ 
+export default (initialState={}) => createStore(myCountersApp, initialState, applyMiddleware(thunk, logMessages, autoSave))
