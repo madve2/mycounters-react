@@ -1,4 +1,4 @@
-import myCountersApp from './reducers' 
+import myCountersApp from '../reducers' 
 import { createStore, applyMiddleware } from 'redux' 
  
 const logMessages = store => next => action => {

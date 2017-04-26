@@ -5,7 +5,7 @@
  
 // render(<div><h1>MyCounters</h1><CounterCollection /></div>, document.getElementById('root'))
 
-import {Actions as C, VisibilityFilters} from './constants'
+import {Actions as C, VisibilityFilters} from './actions/constants'
 import initialState from './initialState.json'
 import storeFactory from './store'
 
