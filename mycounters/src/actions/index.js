@@ -24,6 +24,11 @@ export const addCounter = (name, count) => (dispatch, getState) => {
         })
     }
 }
+
+export const addCounterWithPrompt = () => (dispatch, getState) => { 
+    let name = prompt("Name of the new counter") 
+    dispatch(addCounter(name, 0)) 
+} 
  
 export const removeCounter = name => { 
     return { 

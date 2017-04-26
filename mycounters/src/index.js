@@ -1,30 +1,20 @@
-// import React from 'react' 
-// import { render } from 'react-dom' 
-// import CounterCollection from './CounterCollection' 
-// import './index.css'
- 
-// render(<div><h1>MyCounters</h1><CounterCollection /></div>, document.getElementById('root'))
-
-import * as actions from './actions' 
-import { VisibilityFilters } from './actions/constants'
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import CounterCollection from './components/container/CounterCollection'
 import initialState from './initialState.json'
 import storeFactory from './store'
+import './index.css'
+import * as actions from './actions'
 
 let store = storeFactory(initialState)
 
-store.dispatch(actions.increaseCounter("Bard level")) 
- 
-store.dispatch(actions.addCounter("Barbarian level", 4))
+render(<Provider store={store}>
+            <div>
+                <h1>MyCounters</h1>
+                <CounterCollection />
+            </div>
+       </Provider>, document.getElementById('root'))
 
-store.dispatch(actions.addCounter("Barbarian level", 4))
- 
-store.dispatch(actions.removeCounter("Wizard level")) 
- 
-store.dispatch(actions.setVisibilityFilter(VisibilityFilters.SHOW_POSITIVE))
-
-//store.dispatch(actions.increaseCounterX5("Bard level"))
-
-store.dispatch(actions.clearMessages())
-
-window.store = store; 
+window.store = store;
 window.actions = actions; 
