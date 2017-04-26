@@ -5,31 +5,20 @@
  
 // render(<div><h1>MyCounters</h1><CounterCollection /></div>, document.getElementById('root'))
 
-import {Actions as C, VisibilityFilters} from './actions/constants'
+import * as actions from './actions' 
+import { VisibilityFilters } from './actions/constants'
 import initialState from './initialState.json'
 import storeFactory from './store'
 
 let store = storeFactory(initialState)
 
-store.dispatch({
-    type: C.INCREASE_COUNTER,
-    name: "Bard level"
-})
+store.dispatch(actions.increaseCounter("Bard level")) 
+ 
+store.dispatch(actions.addCounter("Barbarian level", 4)) 
+ 
+store.dispatch(actions.removeCounter("Wizard level")) 
+ 
+store.dispatch(actions.setVisibilityFilter(VisibilityFilters.SHOW_POSITIVE))
 
-store.dispatch({
-    type: C.ADD_COUNTER,
-    payload: {
-        name: "Barbarian level",
-        count: 4
-    }
-})
-
-store.dispatch({
-    type: C.REMOVE_COUNTER,
-    name: "Wizard level"
-})
-
-store.dispatch({
-    type: C.SET_VISIBILITY_FILTER,
-    filter: VisibilityFilters.SHOW_POSITIVE
-})
+window.store = store; 
+window.actions = actions; 
