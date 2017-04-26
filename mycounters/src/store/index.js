@@ -1,5 +1,6 @@
 import myCountersApp from '../reducers' 
 import { createStore, applyMiddleware } from 'redux' 
+import thunk from 'redux-thunk'
  
 const logMessages = store => next => action => {
 
@@ -21,4 +22,4 @@ const logMessages = store => next => action => {
     return result 
 }
 
-export default (initialState={}) => createStore(myCountersApp, initialState, applyMiddleware(logMessages))
+export default (initialState={}) => createStore(myCountersApp, initialState, applyMiddleware(thunk, logMessages))

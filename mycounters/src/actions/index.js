@@ -26,6 +26,16 @@ export const decreaseCounter = name => {
         type: C.DECREASE_COUNTER, 
         name: name 
     } 
+}
+
+export const increaseCounterX5 = name => (dispatch, getState) => { 
+    let i = 0; 
+    var inv = setInterval( () => { 
+        dispatch(increaseCounter(name)) 
+        if (++i >= 5) { 
+            clearInterval(inv) 
+        } 
+    }, 1000) 
 } 
  
 export const setVisibilityFilter = filter => { 

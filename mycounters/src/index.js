@@ -20,5 +20,7 @@ store.dispatch(actions.removeCounter("Wizard level"))
  
 store.dispatch(actions.setVisibilityFilter(VisibilityFilters.SHOW_POSITIVE))
 
+store.dispatch(actions.increaseCounterX5("Bard level"))
+
 window.store = store; 
 window.actions = actions; 
