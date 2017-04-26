@@ -14,13 +14,17 @@ let store = storeFactory(initialState)
 
 store.dispatch(actions.increaseCounter("Bard level")) 
  
-store.dispatch(actions.addCounter("Barbarian level", 4)) 
+store.dispatch(actions.addCounter("Barbarian level", 4))
+
+store.dispatch(actions.addCounter("Barbarian level", 4))
  
 store.dispatch(actions.removeCounter("Wizard level")) 
  
 store.dispatch(actions.setVisibilityFilter(VisibilityFilters.SHOW_POSITIVE))
 
-store.dispatch(actions.increaseCounterX5("Bard level"))
+//store.dispatch(actions.increaseCounterX5("Bard level"))
+
+store.dispatch(actions.clearMessages())
 
 window.store = store; 
 window.actions = actions; 

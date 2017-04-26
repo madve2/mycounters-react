@@ -1,11 +1,29 @@
 import { Actions as C } from '../actions/constants' 
- 
-export const addCounter = (name, count) => { 
-    return { 
-        type: C.ADD_COUNTER, 
-        payload: { name, count } 
-    } 
-} 
+
+export const showMessage = message => {
+    return {
+        type: C.SHOW_MESSAGE,
+        message: message
+    }
+}
+
+export const clearMessages = () => {
+    return {
+        type: C.CLEAR_MESSAGES
+    }
+}
+
+export const addCounter = (name, count) => (dispatch, getState) => {
+    if (getState().counters.some(ctr => ctr.name === name)) {
+        dispatch(showMessage("You already have a counter named " + name))
+    }
+    else {
+        dispatch({
+            type: C.ADD_COUNTER,
+            payload: { name, count }
+        })
+    }
+}
  
 export const removeCounter = name => { 
     return { 
