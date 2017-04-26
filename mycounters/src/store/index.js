@@ -1,6 +1,7 @@
 import myCountersApp from '../reducers' 
 import { createStore, applyMiddleware } from 'redux' 
 import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
  
 const logMessages = store => next => action => {
 
@@ -30,4 +31,4 @@ const autoSave = store => next => action => {
     return result 
 } 
  
-export default (initialState={}) => createStore(myCountersApp, initialState, applyMiddleware(thunk, logMessages, autoSave))
+export default (initialState={}) => createStore(myCountersApp, initialState, composeWithDevTools( applyMiddleware(thunk, logMessages, autoSave) ))
