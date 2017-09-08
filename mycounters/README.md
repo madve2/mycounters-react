@@ -933,7 +933,6 @@ export default (initialState={}) => createStore(myCountersApp, initialState, app
 
 Ez a modul tehát egyetlen factory függvényt exportál, ami létrehoz egy Store-t, aminek opcionálisan átadhatunk egy kezdeti állapotot is. Az `index.js`-ben először is töröljük az eddigi, "kézi" Store létrehozás sorait:
 
-<strike>
 ```JavaScript
 
 import myCountersApp from './store/reducers'
@@ -947,7 +946,6 @@ let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 )
 ```
-</strike>
 
 A myCountersApp importját azért törölhetjük, mert mostmár a Reducerek bekötéséről is a factory gondoskodik!
 
